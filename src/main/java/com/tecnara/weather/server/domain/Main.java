@@ -2,14 +2,14 @@ package com.tecnara.weather.server.domain;
 
 public class Main {
 
-    private String temp;
+    private float temp;
     private String humidity;
 
-    public String getTemp() {
+    public float getTemp() {
         return temp;
     }
 
-    public void setTemp(String temp) {
+    public void setTemp(float temp) {
         this.temp = temp;
     }
 

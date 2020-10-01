@@ -48,7 +48,7 @@ public class JSONInfoClass {
     public String toString() {
         //Temperatura,humedad,tiempoPrincipal, descripcion, velocidad del viento , nombre de poblacion
         return "Ciudad: " + this.getName() + "\n" +
-                "Temperatura: " + (Float.parseFloat(main.getTemp()) - 273.15f) + "\n" +
+                "Temperatura: " + (String.format("%.2f", main.getTemp() - 273.15f)) + "ºC\n" +
                 "Humedad: " + main.getHumidity() + "\n" +
                 "Tiempo principal: " + getWeather().get(0).getMain() + "\n" +
                 "Descripcion: " + getWeather().get(0).getDescription() + "\n"+

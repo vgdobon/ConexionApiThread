@@ -5,9 +5,12 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        Client client = new Client();
-        client.sendRequest(client.getInputParameters());
-        System.out.println(client.getResponse());
+        ClientThread clientThread1= new ClientThread();
+        ClientThread clientThread2= new ClientThread();
+        ClientThread clientThread3= new ClientThread();
 
+        clientThread1.start();
+        clientThread2.start();
+        clientThread3.start();
     }
 }

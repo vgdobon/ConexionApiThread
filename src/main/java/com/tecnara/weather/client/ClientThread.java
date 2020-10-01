@@ -6,14 +6,15 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.Scanner;
 
+public class ClientThread extends Thread{
 
-public class Client {
+
     Socket socket;
     DataOutputStream dos;
     DataInputStream dis;
     Scanner sc= new Scanner(System.in);
 
-    public Client()  {
+    public ClientThread(){
 
         try {
             socket= new Socket("localhost",3334);
@@ -43,7 +44,12 @@ public class Client {
     }
 
     public String getResponse() throws IOException {
-          return dis.readUTF();
+        try {
+            join(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return dis.readUTF();
     }
 
     public void closeConnection(){
@@ -61,4 +67,15 @@ public class Client {
 
     }
 
+
+    public void run () {
+
+        try {
+            sendRequest(getInputParameters());
+            System.out.println(getResponse()+"\n");
+            closeConnection();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
